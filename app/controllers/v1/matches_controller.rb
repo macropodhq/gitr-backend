@@ -18,4 +18,8 @@ class V1::MatchesController < V1::ApplicationController
 
     render status: :accepted, json: {status: 'Match recorded'}
   end
+
+  def index
+    @matches = current_user.matches.matched.map(&:other_user)
+  end
 end

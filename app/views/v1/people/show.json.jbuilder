@@ -1,1 +1,3 @@
-json.people @users, :id, :login, :avatar_url, :location, :name
+json.people do
+  json.partial! 'v1/users/user', collection: @users, as: :user
+end

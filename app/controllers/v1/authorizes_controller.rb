@@ -2,7 +2,6 @@ class V1::AuthorizesController < V1::ApplicationController
   skip_before_filter :login_required
 
   def create
-    # access_token = nil
     if params[:code]
       result = Octokit.exchange_code_for_token(params[:code])
       access_token = result[:access_token]

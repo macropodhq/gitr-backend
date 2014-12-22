@@ -15,4 +15,8 @@ class V1::ApplicationController < ::ApplicationController
   rescue JWT::ExpiredSignature
     render status: :unauthorized, json: {error: 'JWT expired'}
   end
+
+  def current_user
+    @current_user
+  end
 end
