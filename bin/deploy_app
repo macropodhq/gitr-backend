@@ -6,7 +6,7 @@ if [ ! -z "$HOSTS" ]; then
     for host in $HOSTS
     do
 	echo "Deploying to $host"
-	ssh -l deploy $host sudo -H /usr/local/bin/deploy_stack_backend
+	ssh -o StrictHostKeyChecking=no -l deploy $host sudo -H /usr/local/bin/deploy_stack_backend
     done
 fi
 
