@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     resource :authorize
     resources :matches
   end
+
+  get '/status', to: 'status#index'
 end
