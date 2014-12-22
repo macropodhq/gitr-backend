@@ -83,6 +83,7 @@ GEM
       sawyer (~> 0.6.0, >= 0.5.3)
     pg (0.17.1)
     rack (1.6.0)
+    rack-cors (0.2.9)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.2.0)
@@ -157,6 +158,7 @@ DEPENDENCIES
   jwt
   octokit (~> 3.0)
   pg
+  rack-cors
   rails (= 4.2.0)
   sdoc (~> 0.4.0)
   spring

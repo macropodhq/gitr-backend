@@ -9,6 +9,7 @@ gem 'octokit', '~> 3.0'
 gem 'jwt'
 gem 'foreman'
 gem 'unicorn'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
