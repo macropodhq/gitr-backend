@@ -17,16 +17,16 @@ $ curl https://api.gitr.io/people
 
 ```json
 {
-	"people": [
-		{
-			"id": "456456456",
-			"name": "ojame",
-			"repos": [
-				{"name": "whatever", "yep": "there's more"},
-				{"name": "oh look wow", "haha": "what"}
-			]
-		}
-	]
+  "people": [
+    {
+      "id": "456456456",
+      "name": "ojame",
+      "repos": [
+        {"name": "whatever", "yep": "there's more"},
+        {"name": "oh look wow", "haha": "what"}
+      ]
+    }
+  ]
 }
 ```
 
@@ -45,32 +45,32 @@ $ curl https://api.gitr.io/matches
 
 ```json
 {
-	"matches": [
-		{
-			"id": "123123123",
-			"created_at": "2014-12-22T00:00:00.000Z",
-			"person": {
-				"id": "456456456",
-				"name": "ojame",
-				"repos": [
-					{"name": "whatever", "yep": "there's more"},
-					{"name": "oh look wow", "haha": "what"}
-				]
-			}
-		},
-		{
-			"id": "456456456",
-			"created_at": "2014-12-22T00:00:00.000Z",
-			"person": {
-				"id": "789789789",
-				"name": "aussiegeek",
-				"repos": [
-					{"name": "whatever", "yep": "there's more"},
-					{"name": "oh look wow", "haha": "what"}
-				]
-			}
-		}
-	]
+  "matches": [
+    {
+      "id": "123123123",
+      "created_at": "2014-12-22T00:00:00.000Z",
+      "person": {
+        "id": "456456456",
+        "name": "ojame",
+        "repos": [
+          {"name": "whatever", "yep": "there's more"},
+          {"name": "oh look wow", "haha": "what"}
+        ]
+      }
+    },
+    {
+      "id": "456456456",
+      "created_at": "2014-12-22T00:00:00.000Z",
+      "person": {
+        "id": "789789789",
+        "name": "aussiegeek",
+        "repos": [
+          {"name": "whatever", "yep": "there's more"},
+          {"name": "oh look wow", "haha": "what"}
+        ]
+      }
+    }
+  ]
 }
 ```
 
@@ -106,30 +106,30 @@ $ curl https://api.gitr.io/matches/123123123
 
 ```json
 {
-	"id": "123123123",
-	"created_at": "2014-12-22T00:00:00.000Z",
-	"person": {
-		"id": "456456456",
-		"name": "ojame",
-		"repos": [
-			{"name": "whatever", "yep": "there's more"},
-			{"name": "oh look wow", "haha": "what"}
-		]
-	},
-	"messages": [
-		{
-			"id": "789789",
-			"time": "2014-12-22T00:00:00.000Z",
-			"from": "ojame",
-			"text": "Hello! I like your JavaScript projects!"
-		},
-		{
-			"id": "789790",
-			"time": "2014-12-22T00:05:00.000Z",
-			"from": "deoxxa",
-			"text": "Well thanks! What do you think about React?"
-		}
-	]
+  "id": "123123123",
+  "created_at": "2014-12-22T00:00:00.000Z",
+  "person": {
+    "id": "456456456",
+    "name": "ojame",
+    "repos": [
+      {"name": "whatever", "yep": "there's more"},
+      {"name": "oh look wow", "haha": "what"}
+    ]
+  },
+  "messages": [
+    {
+      "id": "789789",
+      "time": "2014-12-22T00:00:00.000Z",
+      "from": "ojame",
+      "text": "Hello! I like your JavaScript projects!"
+    },
+    {
+      "id": "789790",
+      "time": "2014-12-22T00:05:00.000Z",
+      "from": "deoxxa",
+      "text": "Well thanks! What do you think about React?"
+    }
+  ]
 }
 ```
 
@@ -148,10 +148,10 @@ $ curl -X POST -d '{"text": "this is a message"}' \
 
 ```json
 {
-	"id": "789789",
-	"time": "2014-12-22T00:00:00.000Z",
-	"from": "deoxxa",
-	"text": "this is a message"
+  "id": "789789",
+  "time": "2014-12-22T00:00:00.000Z",
+  "from": "deoxxa",
+  "text": "this is a message"
 }
 ```
 
