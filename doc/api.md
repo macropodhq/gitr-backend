@@ -95,7 +95,7 @@ the moment.
 	"name": "ojame",
 	"messages": [
 		{
-			"id": "789789"
+			"id": "789789",
 			"time": "2014-12-22T00:00:00.000Z",
 			"from": "ojame",
 			"text": "Hello! I like your JavaScript projects!"
