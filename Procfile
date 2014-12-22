@@ -1,2 +1,2 @@
-custom_web: bundle exec unicorn_rails -c config/unicorn.rb -E $RAILS_ENV
+custom_web: bin/start_app
 web: nginx -g "daemon off;"
