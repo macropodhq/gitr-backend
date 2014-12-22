@@ -1,8 +1,8 @@
 See https://github.com/trentm/restdown for how this is formatted.
 
-## GET /suggestions
+## GET /people
 
-Gets a few suggested people to connect with.
+Gets a few people to maybe connect with.
 
 It should not return people that you've already decided on, either negatively
 or positively.
@@ -10,49 +10,23 @@ or positively.
 #### example request
 
 ```
-$ curl https://api.gitr.io/suggestions
+$ curl https://api.gitr.io/people
 ```
 
 #### example response
 
 ```json
 {
-	"suggestions": [
+	"people": [
 		{
-			"id": "0123456789abcdef",
-			"whatever": "here"
+			"id": "456456456",
+			"name": "ojame",
+			"repos": [
+				{"name": "whatever", "yep": "there's more"},
+				{"name": "oh look wow", "haha": "what"}
+			]
 		}
 	]
-}
-```
-
-## POST /suggestions/:id
-
-Accept or reject a suggestion. Post a boolean value, get a response. It's a fair
-trade.
-
-#### example request
-
-```
-$ curl -X POST -d true https://api.gitr.io/suggestions/0123456789abcdef
-```
-
-#### example response
-
-The match field is either an ID, or null. If it's null, the person that the
-suggestion represents has either said no, not seen you, or not responded. If
-it's not null, it refers to a `match` record. See the next section for what that
-is.
-
-```json
-{
-	"match": null
-}
-```
-
-```json
-{
-	"match": "0123456789abcdef"
 }
 ```
 
@@ -74,14 +48,47 @@ $ curl https://api.gitr.io/matches
 	"matches": [
 		{
 			"id": "123123123",
-			"name": "ojame"
+			"created_at": "2014-12-22T00:00:00.000Z",
+			"person": {
+				"id": "456456456",
+				"name": "ojame",
+				"repos": [
+					{"name": "whatever", "yep": "there's more"},
+					{"name": "oh look wow", "haha": "what"}
+				]
+			}
 		},
 		{
 			"id": "456456456",
-			"name": "aussiegeek"
+			"created_at": "2014-12-22T00:00:00.000Z",
+			"person": {
+				"id": "789789789",
+				"name": "aussiegeek",
+				"repos": [
+					{"name": "whatever", "yep": "there's more"},
+					{"name": "oh look wow", "haha": "what"}
+				]
+			}
 		}
 	]
 }
+```
+
+## POST /matches
+
+Try to create a match. If the `person` referenced doesn't exist, it will return
+a `406 unacceptable` response. If they do exist, and have also chosen to match
+with you, it will return a `201 created` response with a redirect to the match
+record, and in any other case will return a `202 accepted` reponse with no
+content. If the `match` field is `true`, it'll be registered as your intent to
+match with that person. If it's `false`, it'll be registered as disinterest, and
+won't ever result in a `match` record being created.
+
+#### example request
+
+```
+$ curl -X POST -d '{"person": {"id": "123123"}, "match": true}' \
+  https://api.gitr.io/matches
 ```
 
 ## GET /matches/:id
@@ -100,7 +107,15 @@ $ curl https://api.gitr.io/matches/123123123
 ```json
 {
 	"id": "123123123",
-	"name": "ojame",
+	"created_at": "2014-12-22T00:00:00.000Z",
+	"person": {
+		"id": "456456456",
+		"name": "ojame",
+		"repos": [
+			{"name": "whatever", "yep": "there's more"},
+			{"name": "oh look wow", "haha": "what"}
+		]
+	},
 	"messages": [
 		{
 			"id": "789789",
