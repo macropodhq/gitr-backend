@@ -9,7 +9,9 @@ or positively.
 
 #### example request
 
-> $ curl https://api.gitr.io/suggestions
+```
+$ curl https://api.gitr.io/suggestions
+```
 
 #### example response
 
@@ -31,7 +33,9 @@ trade.
 
 #### example request
 
-> $ curl -X POST -d true https://api.gitr.io/suggestions/0123456789abcdef
+```
+$ curl -X POST -d true https://api.gitr.io/suggestions/0123456789abcdef
+```
 
 #### example response
 
@@ -59,7 +63,9 @@ you've liked.
 
 #### example request
 
-> $ curl https://api.gitr.io/matches
+```
+$ curl https://api.gitr.io/matches
+```
 
 #### example response
 
@@ -85,7 +91,9 @@ the moment.
 
 #### example request
 
-> $ curl https://api.gitr.io/matches/123123123
+```
+$ curl https://api.gitr.io/matches/123123123
+```
 
 #### example response
 
@@ -116,8 +124,10 @@ Post a chat message to a match.
 
 #### example request
 
-> $ curl -X POST -d '{"text": "this is a message"}' \
->   https://api.gitr.io/matches/123123123/messages
+```
+$ curl -X POST -d '{"text": "this is a message"}' \
+  https://api.gitr.io/matches/123123123/messages
+```
 
 #### example response
 
@@ -136,4 +146,6 @@ Delete a match, thus removing their ability to talk to you via gitr.
 
 #### example request
 
-> $ curl -X DELETE https://api.gitr.io/matches/123123123
+```
+$ curl -X DELETE https://api.gitr.io/matches/123123123
+```
