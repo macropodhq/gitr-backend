@@ -30,6 +30,25 @@ $ curl https://api.gitr.io/v1/people
 }
 ```
 
+## GET /v1/profile.json
+
+Fetch your own user profile
+
+#### example response
+
+```json
+{
+  "person":{
+    "id":"5aeec8af-3651-40ac-8247-93fc2a39fde9",
+    "login":"aussiegeek",
+    "avatar_url":"https://avatars.githubusercontent.com/u/475?v=3",
+    "location":"Melbourne, Australia",
+    "name":"Alan Harper",
+    "repos":[]
+  }
+}
+```
+
 ## GET /v1/matches
 
 Gets a list of your matches. These are people that have liked you, and that

@@ -1,3 +1,3 @@
-json.people do
-  json.partial! 'v1/users/user', collection: @users, as: :user
+json.person do
+  json.partial! 'v1/users/user', user: @user
 end

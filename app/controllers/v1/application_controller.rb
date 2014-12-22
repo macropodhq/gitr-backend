@@ -16,6 +16,7 @@ class V1::ApplicationController < ::ApplicationController
     render status: :unauthorized, json: {error: 'JWT expired'}
   end
 
+  helper_method :current_user
   def current_user
     @current_user
   end
