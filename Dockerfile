@@ -11,7 +11,7 @@ ADD Gemfile.lock /gems/Gemfile.lock
 
 WORKDIR /gems
 RUN bundle install --deployment --path /gems
-ADD Procfile /app/Procfile
+ADD . /app
 WORKDIR /app
 
 CMD foreman start -f Procfile
