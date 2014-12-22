@@ -22,4 +22,9 @@ class V1::MatchesController < V1::ApplicationController
   def index
     @matches = current_user.matches.matched.map(&:other_user)
   end
+
+  def destroy
+    current_user.matches.find_by!(other_user_id: params[:id]).destroy
+    render json: {status: 'Match removed'}
+  end
 end

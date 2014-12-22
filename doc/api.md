@@ -141,7 +141,7 @@ Post a chat message to a match.
 
 ```
 $ curl -X POST -d '{"text": "this is a message"}' \
-  https://api.gitr.io/v1/matches/123123123/messages
+  https://api.gitr.io/v1/matches/123123123/messages.json
 ```
 
 #### example response
@@ -157,10 +157,10 @@ $ curl -X POST -d '{"text": "this is a message"}' \
 
 ## DELETE /v1/matches/:id
 
-Delete a match, thus removing their ability to talk to you via gitr.
+Delete a match, thus removing their ability to talk to you via gitr. The id mentioned here is the other user's user id.
 
 #### example request
 
 ```
-$ curl -X DELETE https://api.gitr.io/v1/matches/123123123
+$ curl -X DELETE https://api.gitr.io/v1/matches/123123123.json
 ```
