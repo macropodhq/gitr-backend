@@ -6,19 +6,9 @@ class ApplicationController < ActionController::Base
   before_filter :login_required
 
   def login_required
-    if session[:user_id].blank?
-      redirect_to '/login'
-      return
-    end
-
-    current_user
-  end
-
-  helper_method :current_user
-  def current_user
-    @current_user ||= User.find(session[:user_id])
-  rescue ActiveRecord::RecordNotFound
     reset_session
-    redirect_to '/'
+
+    render status: :unauthorized, json: {status: 'Action not authorised'}
+    return
   end
 end

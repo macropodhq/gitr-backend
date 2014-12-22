@@ -4,6 +4,8 @@ gem 'rails', '4.2.0'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'dotenv-rails'
 gem 'bson'
 gem 'octokit', '~> 3.0'
 gem 'jwt'
@@ -22,6 +24,5 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'dotenv-rails'
 end
 
