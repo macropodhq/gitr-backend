@@ -1,6 +1,6 @@
 See https://github.com/trentm/restdown for how this is formatted.
 
-## GET /people
+## GET /v1/people
 
 Gets a few people to maybe connect with.
 
@@ -10,7 +10,7 @@ or positively.
 #### example request
 
 ```
-$ curl https://api.gitr.io/people
+$ curl https://api.gitr.io/v1/people
 ```
 
 #### example response
@@ -30,7 +30,7 @@ $ curl https://api.gitr.io/people
 }
 ```
 
-## GET /matches
+## GET /v1/matches
 
 Gets a list of your matches. These are people that have liked you, and that
 you've liked.
@@ -38,7 +38,7 @@ you've liked.
 #### example request
 
 ```
-$ curl https://api.gitr.io/matches
+$ curl https://api.gitr.io/v1/matches
 ```
 
 #### example response
@@ -74,7 +74,7 @@ $ curl https://api.gitr.io/matches
 }
 ```
 
-## POST /matches
+## POST /v1/matches
 
 Try to create a match. If the `person` referenced doesn't exist, it will return
 a `406 unacceptable` response. If they do exist, and have also chosen to match
@@ -91,7 +91,7 @@ $ curl -X POST -d '{"person": {"id": "123123"}, "match": true}' \
   https://api.gitr.io/matches
 ```
 
-## GET /matches/:id
+## GET /v1/matches/:id
 
 Gets the activity between you and a match. This is just conversation messages at
 the moment.
@@ -99,7 +99,7 @@ the moment.
 #### example request
 
 ```
-$ curl https://api.gitr.io/matches/123123123
+$ curl https://api.gitr.io/v1/matches/123123123
 ```
 
 #### example response
@@ -133,7 +133,7 @@ $ curl https://api.gitr.io/matches/123123123
 }
 ```
 
-## POST /matches/:id/messages
+## POST /v1/matches/:id/messages
 
 Post a chat message to a match.
 
@@ -141,7 +141,7 @@ Post a chat message to a match.
 
 ```
 $ curl -X POST -d '{"text": "this is a message"}' \
-  https://api.gitr.io/matches/123123123/messages
+  https://api.gitr.io/v1/matches/123123123/messages
 ```
 
 #### example response
@@ -155,12 +155,12 @@ $ curl -X POST -d '{"text": "this is a message"}' \
 }
 ```
 
-## DELETE /matches/:id
+## DELETE /v1/matches/:id
 
 Delete a match, thus removing their ability to talk to you via gitr.
 
 #### example request
 
 ```
-$ curl -X DELETE https://api.gitr.io/matches/123123123
+$ curl -X DELETE https://api.gitr.io/v1/matches/123123123
 ```
