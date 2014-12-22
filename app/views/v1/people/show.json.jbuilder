@@ -1,0 +1,1 @@
+json.people @users, :id, :login, :avatar_url, :location, :name
