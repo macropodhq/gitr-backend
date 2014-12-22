@@ -6,7 +6,7 @@ class V1::ApplicationController < ::ApplicationController
     token = params[:token] if token.blank?
     result = JWT.decode(token, ENV['JWT_SECRET_KEY'])
 
-    @current_user == User.find(result[0]['user_id'])
+    @current_user = User.find(result[0]['user_id'])
   rescue JWT::ExpiredSignature
     render status: :unauthorized, json: {error: 'JWT expired'}
   end
