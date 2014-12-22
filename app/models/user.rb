@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :matches, dependent: :destroy
+
   def generate_jwt
     JWT.encode({
                    user_id: id,

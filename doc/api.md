@@ -79,7 +79,7 @@ $ curl https://api.gitr.io/v1/matches
 Try to create a match. If the `person` referenced doesn't exist, it will return
 a `406 unacceptable` response. If they do exist, and have also chosen to match
 with you, it will return a `201 created` response with a redirect to the match
-record, and in any other case will return a `202 accepted` reponse with no
+record, and in any other case will return a `202 accepted` response with no
 content. If the `match` field is `true`, it'll be registered as your intent to
 match with that person. If it's `false`, it'll be registered as disinterest, and
 won't ever result in a `match` record being created.
@@ -88,7 +88,7 @@ won't ever result in a `match` record being created.
 
 ```
 $ curl -X POST -d '{"person": {"id": "123123"}, "match": true}' \
-  https://api.gitr.io/matches
+  https://api.gitr.io/v1/matches.json
 ```
 
 ## GET /v1/matches/:id
