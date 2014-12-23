@@ -16,4 +16,4 @@ WORKDIR /app
 RUN rm -rf log
 RUN ln -sf /log
 
-CMD foreman start -f Procfile
+CMD foreman start -f Procfile.production

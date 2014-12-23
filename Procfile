@@ -1,3 +1,2 @@
-custom_web: bin/start_app
-web: nginx -g "daemon off;"
+web: bundle exec rails server
 jobs: bundle exec rake jobs:work
