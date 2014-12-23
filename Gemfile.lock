@@ -52,6 +52,11 @@ GEM
     columnize (0.9.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.0.3)
+      activerecord (>= 3.0, < 5.0)
+      delayed_job (>= 3.0, < 4.1)
     dotenv (0.10.0)
     dotenv-rails (0.10.0)
       dotenv (= 0.10.0)
@@ -168,6 +173,7 @@ DEPENDENCIES
   bson
   bugsnag
   byebug
+  delayed_job_active_record
   dotenv-rails
   foreman
   jbuilder (~> 2.0)
