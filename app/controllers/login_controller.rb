@@ -42,6 +42,7 @@ class LoginController < ApplicationController
     user.location = client.user.location
     user.name = client.user.name
     user.repos = client.repositories(user.login).map{|r|r.attrs.slice(:name, :description, :language, :forks, :watchers, :pushed_at)}.sort{|a,b| a[:pushed_at].to_i <=> b[:pushed_at].to_i}.reverse[0,3]
+    user.last_seen_at = Time.now
     user.save!
 
     jwt = user.generate_jwt
