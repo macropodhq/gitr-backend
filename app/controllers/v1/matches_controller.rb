@@ -27,4 +27,10 @@ class V1::MatchesController < V1::ApplicationController
     current_user.matches.find_by!(other_user_id: params[:id]).destroy
     render json: {status: 'Match removed'}
   end
+
+  def show
+    @match = current_user.matches.find_by!(other_user_id: params[:id])
+
+    @messages = Message.find_by_sql ['select * from messages where (user_id=:current_user_id AND other_user_id=:other_user_id) OR (user_id=:other_user_id AND other_user_id=:current_user_id)', {current_user_id: current_user.id, other_user_id: @match.other_user_id}]
+  end
 end

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resources :people
     resource :profile
     resource :authorize
-    resources :matches
+    resources :matches do
+      resources :messages
+    end
   end
 
   get '/auth', to: 'login#auth'

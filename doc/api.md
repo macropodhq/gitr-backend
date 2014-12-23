@@ -139,13 +139,13 @@ $ curl https://api.gitr.io/v1/matches/123123123
     {
       "id": "789789",
       "time": "2014-12-22T00:00:00.000Z",
-      "from": "ojame",
+      "from": "0000120a-d660-4c6a-b3a2-46f3f5452dc6",
       "text": "Hello! I like your JavaScript projects!"
     },
     {
       "id": "789790",
       "time": "2014-12-22T00:05:00.000Z",
-      "from": "deoxxa",
+      "from": "5aeec8af-3651-40ac-8247-93fc2a39fde9",
       "text": "Well thanks! What do you think about React?"
     }
   ]
