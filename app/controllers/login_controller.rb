@@ -34,7 +34,8 @@ class LoginController < ApplicationController
 
     user = User.find_or_create_by(login: github_user.login)
     user.last_seen_at = Time.now
-    user.update_from_github(github_user)
+    user.save!
+    Delayed::Job.enqueue GithubUpdateJob.new(github_user.login)
 
     jwt = user.generate_jwt
 
