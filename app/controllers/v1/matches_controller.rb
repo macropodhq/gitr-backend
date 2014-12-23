@@ -10,7 +10,7 @@ class V1::MatchesController < V1::ApplicationController
     match.match = params[:match]
     match.save!
 
-    if match && Match.find_by(other_user_id: current_user, match: true)
+    if match.match && Match.find_by(other_user_id: current_user, match: true)
       # we have a match!
       render status: :created, json: {status: 'Matched with other user'}
       current_user.push_message({
