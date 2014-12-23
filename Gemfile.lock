@@ -56,6 +56,7 @@ GEM
     dotenv-rails (0.10.0)
       dotenv (= 0.10.0)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     foreman (0.63.0)
@@ -84,12 +85,17 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    net-http-persistent (2.9.4)
     newrelic_rpm (3.9.8.273)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     octokit (3.7.0)
       sawyer (~> 0.6.0, >= 0.5.3)
     pg (0.17.1)
+    pubnub (3.5.8)
+      eventmachine
+      json
+      net-http-persistent
     rack (1.6.0)
     rack-cors (0.2.9)
     rack-test (0.6.2)
@@ -168,6 +174,7 @@ DEPENDENCIES
   newrelic_rpm
   octokit (~> 3.0)
   pg
+  pubnub
   rack-cors
   rails (= 4.2.0)
   sdoc (~> 0.4.0)
