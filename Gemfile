@@ -15,6 +15,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'bugsnag'
 gem 'newrelic_rpm'
 gem 'pubnub'
+gem 'yajl-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
