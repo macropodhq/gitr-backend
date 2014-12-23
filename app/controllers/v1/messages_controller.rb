@@ -12,14 +12,16 @@ class V1::MessagesController < V1::ApplicationController
                                   type: 'message',
                                   created_at: @message.created_at,
                                   text: @message.text,
-                                  from: @message.user.id
+                                  from: @message.user.id,
+                                  id: @message.id
                               })
 
     @message.other_user.push_message({
                                   type: 'message',
                                   created_at: @message.created_at,
                                   text: @message.text,
-                                  from: @message.user.id
+                                  from: @message.user.id,
+                                  id: @message.id
                               })
 
     render status: :created
