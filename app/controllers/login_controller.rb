@@ -47,5 +47,7 @@ class LoginController < ApplicationController
     jwt = user.generate_jwt
 
     redirect_to session[:redirect_uri] + '?token=' + jwt
+  rescue Octokit::Unauthorized
+    redirect_to '/auth'
   end
 end
