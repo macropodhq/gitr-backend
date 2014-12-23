@@ -13,6 +13,14 @@ class V1::MatchesController < V1::ApplicationController
     if match && Match.find_by(other_user_id: current_user, match: true)
       # we have a match!
       render status: :created, json: {status: 'Matched with other user'}
+      current_user.push_message({
+                                    type: 'match',
+                                    other_user_id: other.id
+                                })
+      other.push_message({
+                                    type: 'match',
+                                    other_user_id: other.id
+                                })
       return
     end
 
