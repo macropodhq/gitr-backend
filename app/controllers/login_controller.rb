@@ -23,27 +23,18 @@ class LoginController < ApplicationController
     client = Octokit::Client.new(access_token: access_token)
 
     uri = URI.parse(session[:redirect_uri])
+    github_user = client.user
     unless uri.hostname == 'app.gitr.io' || uri.hostname == 'gitr.io'
       #check for auth shenanigans
-      unless client.organization_member?('macropodhq', client.user.login)
+      unless client.organization_member?('macropodhq', github_user.login)
         render status: :forbidden, text: 'Redirect url must be to gitr.io'
         return
       end
     end
 
-    user = User.find_or_create_by(login: client.user.login)
-    user.login = client.user.login
-    user.avatar_url = client.user.avatar_url
-    user.github_id = client.user.id
-    user.public_repos = client.user.public_repos
-    user.public_gists = client.user.public_gists
-    user.followers = client.user.followers
-    user.following = client.user.following
-    user.location = client.user.location
-    user.name = client.user.name
-    user.repos = client.repositories(user.login).map{|r|r.attrs.slice(:name, :description, :language, :forks, :watchers, :pushed_at)}.sort{|a,b| a[:pushed_at].to_i <=> b[:pushed_at].to_i}.reverse[0,3]
+    user = User.find_or_create_by(login: github_user.login)
     user.last_seen_at = Time.now
-    user.save!
+    user.update_from_github(github_user)
 
     jwt = user.generate_jwt
 

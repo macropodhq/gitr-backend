@@ -27,4 +27,20 @@ class User < ActiveRecord::Base
     ) { |data| puts data.response }
 
   end
+
+  def update_from_github(github_user)
+    self.login = github_user.login
+    self.avatar_url = github_user.avatar_url
+    self.github_id = github_user.id
+    self.public_repos = github_user.public_repos
+    self.public_gists = github_user.public_gists
+    self.followers = github_user.followers
+    self.following = github_user.following
+    self.location = github_user.location
+    self.name = github_user.name
+    self.repos = Octokit.repositories(github_user.login).map{|r|r.attrs.slice(:name, :description, :language, :forks, :watchers, :pushed_at)}.sort{|a,b| a[:pushed_at].to_i <=> b[:pushed_at].to_i}.reverse[0,3]
+    self.bio = github_user.bio
+    self.company = github_user.company
+    self.save!
+  end
 end
