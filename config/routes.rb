@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :people
     resource :profile
-    resource :authorize
     resources :matches do
       resources :messages
     end
