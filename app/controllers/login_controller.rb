@@ -23,10 +23,10 @@ class LoginController < ApplicationController
     client = Octokit::Client.new(access_token: access_token)
 
     uri = URI.parse(session[:redirect_uri])
-    unless uri.hostname == 'app.gitr.io'
+    unless uri.hostname == 'app.gitr.io' || uri.hostname == 'gitr.io'
       #check for auth shenanigans
       unless client.organization_member?('macropodhq', client.user.login)
-        render status: :forbidden, text: 'Redirect url must be to app.gitr.io'
+        render status: :forbidden, text: 'Redirect url must be to gitr.io'
         return
       end
     end
