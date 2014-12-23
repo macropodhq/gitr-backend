@@ -38,7 +38,15 @@ class User < ActiveRecord::Base
     self.following = github_user.following
     self.location = github_user.location
     self.name = github_user.name
-    self.repos = Octokit.repositories(github_user.login).map{|r|r.attrs.slice(:name, :description, :language, :forks, :watchers, :pushed_at)}.sort{|a,b| a[:pushed_at].to_i <=> b[:pushed_at].to_i}.reverse[0,3]
+    repos = Octokit.repositories(github_user.login).map { |r| r.attrs.slice(:name, :description, :language, :forks, :watchers, :pushed_at, :full_name) }.sort { |a, b| a[:pushed_at].to_i <=> b[:pushed_at].to_i }.reverse[0, 3]
+
+    repos.each do |repo|
+      begin
+        repo[:readme] = open("https://raw.githubusercontent.com/#{repo[:full_name]}/master/README.md").read[0,500]
+      rescue OpenURI::HTTPError
+      end
+    end
+    self.repos = repos
     self.bio = github_user.bio
     self.company = github_user.company
     self.save!
