@@ -1,6 +1,6 @@
 class CreateMessages < ActiveRecord::Migration
   def change
-    create_table :messages do |t|
+    create_table :messages, id: :uuid do |t|
       t.uuid :user_id, index: true
       t.uuid :other_user_id, index: true
       t.text :text
