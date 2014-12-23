@@ -1,2 +1,1 @@
-json.extract! user, :id, :login, :avatar_url, :location, :name
-json.repos []
+json.extract! user, :id, :login, :avatar_url, :location, :name, :repos
