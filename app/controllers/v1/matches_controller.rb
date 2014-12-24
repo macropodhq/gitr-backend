@@ -30,7 +30,7 @@ class V1::MatchesController < V1::ApplicationController
   end
 
   def index
-    @matches = current_user.matches.matched.map(&:other_user)
+    @matches = User.find_by_sql ["select users.* from matches inner join matches as other_matches on matches.other_user_id=other_matches.user_id inner join users on matches.other_user_id=users.id where matches.user_id=:user_id and matches.match='t' and other_matches.match='t' and other_matches.other_user_id=:user_id", user_id: current_user.id]
   end
 
   def destroy
