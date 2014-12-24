@@ -15,11 +15,13 @@ class V1::MatchesController < V1::ApplicationController
       render status: :created, json: {status: 'Matched with other user'}
       current_user.push_message({
                                     type: 'match',
-                                    other_user_id: other.id
+                                    other_user_id: other.id,
+                                    match_id: match.id
                                 })
       other.push_message({
                                     type: 'match',
-                                    other_user_id: other.id
+                                    other_user_id: other.id,
+                                    match_id: match.id
                                 })
       return
     end
