@@ -13,7 +13,8 @@ class V1::MessagesController < V1::ApplicationController
                                   created_at: @message.created_at,
                                   text: @message.text,
                                   from: @message.user.id,
-                                  id: @message.id
+                                  id: @message.id,
+                                  match_id: match.id
                               })
 
     @message.other_user.push_message({
@@ -21,7 +22,8 @@ class V1::MessagesController < V1::ApplicationController
                                   created_at: @message.created_at,
                                   text: @message.text,
                                   from: @message.user.id,
-                                  id: @message.id
+                                  id: @message.id,
+                                  match_id: match.id
                               })
 
     render status: :created
