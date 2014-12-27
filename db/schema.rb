@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223215308) do
+ActiveRecord::Schema.define(version: 20141227012633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,13 +45,12 @@ ActiveRecord::Schema.define(version: 20141223215308) do
   add_index "matches", ["other_user_id"], name: "index_matches_on_other_user_id", using: :btree
   add_index "matches", ["user_id"], name: "index_matches_on_user_id", using: :btree
 
-  create_table "messages", id: false, force: :cascade do |t|
+  create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "user_id"
     t.uuid     "other_user_id"
     t.text     "text"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.uuid     "id"
   end
 
   add_index "messages", ["other_user_id"], name: "index_messages_on_other_user_id", using: :btree
@@ -67,12 +66,14 @@ ActiveRecord::Schema.define(version: 20141223215308) do
     t.integer  "following"
     t.string   "location"
     t.string   "name"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.json     "repos"
     t.datetime "last_seen_at"
     t.string   "bio"
     t.string   "company"
+    t.string   "email"
+    t.string   "github_access_token"
   end
 
   add_index "users", ["github_id"], name: "index_users_on_github_id", using: :btree

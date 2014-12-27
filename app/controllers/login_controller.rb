@@ -9,7 +9,7 @@ class LoginController < ApplicationController
 
     session[:redirect_uri] = params[:redirect_uri]
 
-    redirect_to Octokit::Client.new.authorize_url
+    redirect_to Octokit::Client.new.authorize_url Octokit.client_id, scope: 'user:email'
   end
 
   def callback
@@ -34,6 +34,7 @@ class LoginController < ApplicationController
 
     user = User.find_or_create_by(login: github_user.login)
     user.last_seen_at = Time.now
+    user.github_access_token = access_token
     user.save!
     Delayed::Job.enqueue GithubUpdateJob.new(github_user.login)
 

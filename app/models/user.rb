@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
     self.following = github_user.following
     self.location = github_user.location
     self.name = github_user.name
+    self.email = github_user.email
     repos = Octokit.repositories(github_user.login).map { |r| r.attrs.slice(:name, :description, :language, :forks, :watchers, :pushed_at, :full_name) }.sort { |a, b| a[:pushed_at].to_i <=> b[:pushed_at].to_i }.reverse[0, 3]
 
     repos.each do |repo|
