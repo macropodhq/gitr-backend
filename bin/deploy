@@ -2,11 +2,6 @@
 
 set -e
 
-if [ -z "$APP_ENV" ]; then
-  echo "APP_ENV must be set"
-  exit 1
-fi
-
 SHA1=`git rev-parse --short HEAD | tr -d "\n"`
 
 DEPLOY_FILE=$SHA1.zip
