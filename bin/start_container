@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export DATABASE_URL=postgres://$RDS_USERNAME:$RDS_PASSWORD@$RDS_HOSTNAME/$RDS_DB_NAME
+bundle exec rake db:migrate
+foreman start -f Procfile.production

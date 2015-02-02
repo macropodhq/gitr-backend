@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+SHA1=`git rev-parse --short HEAD | tr -d "\n"`
+
+docker build -t macropod/gitr-backend:$SHA1 .
+
+if [ ! -z "$PUBLISH" -a "$BUILDBOX_BRANCH" == "master" ]; then
+  echo "--- Publishing container"
+  docker push macropod/gitr-backend:$SHA1
+fi
+

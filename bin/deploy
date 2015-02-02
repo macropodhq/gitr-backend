@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+if [ -z "$APP_ENV" ]; then
+  echo "APP_ENV must be set"
+  exit 1
+fi
+
+SHA1=`git rev-parse --short HEAD | tr -d "\n"`
+
+DEPLOY_FILE=$SHA1.zip
+
+sed "s/<TAG>/${SHA1}/" < Dockerrun.aws.json.template > Dockerrun.aws.json
+zip -r $DEPLOY_FILE Dockerrun.aws.json
+
+aws s3 cp $DEPLOY_FILE s3://macropod-deploy/gitr-backend/$DEPLOY_FILE
+
+aws elasticbeanstalk create-application-version --application-name gitr-backend --version-label $SHA1 --source-bundle S3Bucket=macropod-deploy,S3Key=gitr-backend/$DEPLOY_FILE  || /bin/true #don't fail if rebuilding
+
+# # Update Elastic Beanstalk environment to new version
+aws elasticbeanstalk update-environment --environment-name gitr-backend --version-label ${SHA1}
